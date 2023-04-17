@@ -1,6 +1,6 @@
 <template>
-  <div class="grid grid-cols-3 p-4 gap-4">
-    <div v-for="(hero, i) in charectors" :key="i">
+  <div class="content-app grid grid-cols-3 p-4 gap-4">
+    <div class="content-app" v-for="(hero, i) in charectors" :key="i">
       <HeroCard :hero="hero" />
     </div>
   </div>
@@ -11,9 +11,7 @@ import { ref, computed } from "vue";
 import { useFetchStore } from "@/stores/fetchData";
 import { storeToRefs } from "pinia";
 
-definePageMeta({
-  layout: "products",
-});
+
 
 const store = useFetchStore();
 const { charectors } = storeToRefs(store);
@@ -25,4 +23,18 @@ onMounted(() => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.content-app {
+  animation: fadein 1s;
+}
+
+@keyframes fadein {
+ from {
+  opacity: 0;
+  
+ }
+ to {
+  opacity: 1;
+ }
+}
+</style>

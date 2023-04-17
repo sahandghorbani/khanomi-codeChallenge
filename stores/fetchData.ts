@@ -12,23 +12,26 @@ export interface IProduct {
 export const useFetchStore = defineStore("fetch", {
   state: () => ({
     charectors: {},
-    charector : {}
+    charector: {},
+    searchResult: [],
   }),
   actions: {
     async fetchData(url: string) {
       this.charectors = {};
       let data = await axios.get(url);
-      // console.log(data.data.data.results);
-      
+
       this.charectors = data.data.data.results;
     },
     async fetchSingleHero(url: string) {
-      this.charector = {}
+      this.charector = {};
       let data = await axios.get(url);
-      // console.log(data.data.data.results[0]);
       this.charector = data.data.data.results[0];
-      console.log(this.charector);
-      
+    },
+
+    async searchingCharector(query: string) {
+      let url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${query}&apikey=7e11bd911194ddf46b9066239fcc160b`;
+      await this.fetchData(url);
+
     },
   },
 });
