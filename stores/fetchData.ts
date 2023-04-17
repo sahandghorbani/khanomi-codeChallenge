@@ -1,4 +1,6 @@
 import axios from "axios";
+const PUBLIC_KEY = useRuntimeConfig().public.PUBLIC_KEY;
+const BASE_URL = useRuntimeConfig().public.BASE_URL;
 export interface IProduct {
   id: number;
   title: string;
@@ -29,9 +31,9 @@ export const useFetchStore = defineStore("fetch", {
     },
 
     async searchingCharector(query: string) {
-      let url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${query}&apikey=7e11bd911194ddf46b9066239fcc160b`;
-      await this.fetchData(url);
 
+      let url = `${BASE_URL}?nameStartsWith=${query}&apikey=${PUBLIC_KEY}`;
+      await this.fetchData(url);
     },
   },
 });

@@ -4,7 +4,7 @@
       :src="hero.thumbnail.path + '.' + hero.thumbnail.extension"
       class="thumb rounded-md"
     />
-    <p class="font-bold text-gray-500 m-4 truncate">{{ hero.name }}</p>
+    <p class="font-bold text-white m-4 truncate">{{ hero.name }}</p>
     <NuxtLink :to="`/heros/${hero.id}`">
       <p class="btn my-4 flex min-w-full">View Details</p>
     </NuxtLink>

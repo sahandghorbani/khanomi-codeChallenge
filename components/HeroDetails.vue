@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card text-white">
     <div class="grid lg:grid-cols-2 gap-10 md:grid-cols-1">
       <div class="p-7">
         <img  :src="charector.thumbnail.path + '.' + charector.thumbnail.extension" class="mx-auto my-7 rounded-md" />
@@ -25,7 +25,6 @@ definePageMeta({
   layout: "heros",
 });
 const { charector } = defineProps(["charector"]);
-console.log(charector);
 </script>
 
 <style scoped>
