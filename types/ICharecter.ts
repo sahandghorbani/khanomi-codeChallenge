@@ -8,3 +8,9 @@ export interface ICharecter {
   rating: { rate: number; count: number };
   /// ...
 }
+
+export type IQueryParams ={
+  nameStartsWith:string ,
+  apikey:string ,
+
+}

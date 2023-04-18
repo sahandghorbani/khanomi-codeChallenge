@@ -4,9 +4,9 @@
       <HeroCard :hero="hero" />
     </div>
   </div>
-      <div v-if="charectors.length == 0">
-        <h2 class="text-white text-center text-2xl"> no hero found</h2>
-      </div>
+  <div v-if="charectors.length == 0">
+    <h2 class="text-white text-center text-2xl">no hero found</h2>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -16,9 +16,8 @@ import { storeToRefs } from "pinia";
 const store = useFetchStore();
 const { charectors } = storeToRefs(store);
 
-
-const publicKey :string = useRuntimeConfig().public.PUBLIC_KEY;
-const baseUrl :string = useRuntimeConfig().public.BASE_URL;
+const publicKey: string = useRuntimeConfig().public.PUBLIC_KEY;
+const baseUrl: string = useRuntimeConfig().public.BASE_URL;
 
 store.fetchData(`${baseUrl}?apikey=${publicKey}`);
 </script>

@@ -21,6 +21,7 @@ export default defineNuxtConfig({
       ],
     },
   },
+  // accessing to environment variables
   runtimeConfig: {
     public: {
       PUBLIC_KEY: process.env.PUBLIC_KEY,

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeroDetails :charector="charector.data.results[0]" />
+    <HeroDetails :charecter="charector.data.results[0]" />
   </div>
 </template>
 
@@ -10,9 +10,9 @@ import { storeToRefs } from "pinia";
 const { id } = useRoute().params;
 
 // first approach: call method by built-in nuxt composable :
-const publicKey = useRuntimeConfig().public.PUBLIC_KEY;
+const publicKey = useRuntimeConfig().public.PUBLIC_KEY; // accessing environment variables
 const url = `https://gateway.marvel.com:443/v1/public/characters/${id}?apikey=${publicKey}`;
-let { data: charector } : any = await useFetch(url);
+let { data: charector }: any = await useFetch(url);
 console.log(charector.value);
 
 if (!charector.value) {
