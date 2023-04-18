@@ -32,7 +32,7 @@ let searchCharecter = () => {
   clearTimeout(timeout.value);
   timeout.value = setTimeout(async function () {
     await store.searchingCharector(query.value);
-    router.push("/heros");
+    router.push("/");
   }, 600);
 };
 </script>

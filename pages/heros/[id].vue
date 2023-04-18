@@ -4,22 +4,28 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useFetchStore } from "@/stores/fetchData";
 import { storeToRefs } from "pinia";
-import { computed } from "vue";
-
-const store = useFetchStore();
-// const { charector } = storeToRefs(store);
 const { id } = useRoute().params;
-const url = ref(
-  `https://gateway.marvel.com:443/v1/public/characters/${id}?apikey=7e11bd911194ddf46b9066239fcc160b`
-);
-// store.fetchSingleHero(url.value);
-let { data: charector , refresh } = await useFetch(url.value);
-// if (!charector.value) {
-//   throw createError({ statusCode: 404, statusMessage: "Product not found" });
-// }
+
+// first approach: call method by built-in nuxt composable :
+const publicKey = useRuntimeConfig().public.PUBLIC_KEY;
+const url = `https://gateway.marvel.com:443/v1/public/characters/${id}?apikey=${publicKey}`;
+let { data: charector } : any = await useFetch(url);
+console.log(charector.value);
+
+if (!charector.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Hero charrector not found",
+  });
+}
+
+// second approach: call method from store :
+/* const store = useFetchStore();
+store.fetchSingleHero(url.value);
+const { charector } = storeToRefs(store); */
 </script>
 
 <style lang="scss" scoped></style>
